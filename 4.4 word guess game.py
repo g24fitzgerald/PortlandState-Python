@@ -1,4 +1,5 @@
-#py Chal 4.4
+#Copyright (c) 2014 Gina Fitzgerald 
+#Python Challenge 4.4 from Python Programming 3rd edition by Michael Dawson
 
 import random
 

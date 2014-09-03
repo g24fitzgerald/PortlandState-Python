@@ -1,3 +1,20 @@
+# Copyright (c) 2014 Gina Fitzgerald
+# Coinwar Game-Portland State University - New Beginningsprogram - developed by Bart Massey
+#You need not write your own tests for this game. Instead, I have supplied 10 tests that your program should pass elsewhere. Each test consists of an initial state and an expected game result. To run these tests, you will have to write your program so that it can optionally take a given initial state rather than randomly generating one itself, either from the test file or by typing it in by hand.
+#Each team has 1 army of 5 coins flipped on each turn.
+#Round of play: The players compare the first coins in their armies.
+
+#H beats T, so if the coins mismatch, the player with H captures the coin of the player with T, and puts the T and H at the end of their Army in that order.
+
+#In addition, the player with H then captures the Prisoners of the player with T—see below—and places the opposing Prisoners and then their own Prisoners in order at the end of their Army.
+
+#If the coins are the same, each player puts the matched coin at the end of their Prisoners. Players with coins still in their Army then put the first remaining coin in their Army at the end of their sequence of Prisoners.
+
+#Victory conditions: At any point, if either player has no Army, the game is immediately over.
+
+#If only one player has an Army, that player wins. Otherwise, both players must have no Army.If one player has more H coins than the other in their Prisoners, that player wins.Otherwise, the game is a tie.
+
+
 from random import choice
 from tkinter import *
 
