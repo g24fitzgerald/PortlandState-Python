@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>repl.it</title>
+        <script src="index.js"></script>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+      <div id="wrapper">
+        <blockquote>{{ joke }}</blockquote>
+        <button value="Refresh Page" onClick="window.location.reload()">New Fact!</button>
+        <div id="scene">
+          <div class="mirror"></div>
+          <div class="desk">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+          </div>
+          <div class="vase">
+            <div class="stem stem-1"></div>
+            <div class="stem stem-2"></div>
+          </div>
+          <div class="cabinet">
+            <div class="shelf shelf-1">
+              <div class="book book-1"></div>
+              <div class="book book-2"></div>
+              <div class="book book-3"></div>
+              <div class="book book-4"></div>
+            </div>
+            <div class="shelf shelf-2">
+              <div class="book book-1"></div>
+              <div class="book book-2"></div>
+              <div class="book book-3"></div>
+              <div class="book book-4"></div>
+              <div class="book book-5"></div>
+            </div>
+            <div class="drawer drawer-1"></div>
+            <div class="drawer drawer-2"></div>
+          </div>
+        </div>
+        <div id="chuck-norris">
+          <div class="hat"></div>
+          <div class="face"></div>
+          <div class="eye"></div>
+          <div class="hair"></div>
+          <div class="beard"></div>
+          <div class="shirt"></div>
+          <div class="arm"></div>
+          <div class="pants"></div>
+          <div class="shoes"></div>
+        </div>
+        <div id="earth"></div>
+        <footer>
+          Copyright &copy; Gina Fitzgerald 2017
+        </footer>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+li {
+  width: 100px;
+  background-color: yellow;
+  display: inline-block;
+  color: white;
+}
+.incorrect {
+  display: none;
+}

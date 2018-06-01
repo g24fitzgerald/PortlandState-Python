@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {
+      "intent": "GetAlternativeFuelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

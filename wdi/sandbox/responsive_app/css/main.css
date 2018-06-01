@@ -1,0 +1,46 @@
+#box1 {
+  background-color: red;
+}
+#box2 {
+  background-color: yellow;
+}
+#box3 {
+  background-color: green;
+}
+#box4 {
+  background-color: blue;
+}
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+@media (min-width:375px) {
+  #box1 {
+    background-color: pink;
+  }
+  #box2 {
+    background-color: yellow;
+  }
+  #box3 {
+    background-color: red;
+  }
+  #box4 {
+    background-color: lavender;
+  }
+}
+
+@media (min-width:768px) {
+  #box1 {
+    background-color: pink;
+  }
+  #box2 {
+    background-color: pink;
+  }
+  #box3 {
+    background-color: pink;
+  }
+  #box4 {
+    background-color: pink;
+  }
+}

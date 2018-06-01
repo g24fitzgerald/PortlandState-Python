@@ -1,0 +1,467 @@
+<header id="header" role="banner">
+  <nav class="navbar navbar-white navbar-smaller animated-dropdown btt-dropdown" role="navigation">
+    <div class="navbar-top navbar-white clearfix">
+      <div class="container-fluid">
+        <div {{bind-attr class="authSession.currentUser:pull-right:pull-left"}}>
+          <div class="pull-left social-icons">
+            <a target='_blank' href="https://www.facebook.com/EpicNationalRealty/" class="social-icon icon-facebook" title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+            <a target='_blank' href="https://twitter.com/epic_nr" class="social-icon icon-twitter" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a target='_blank' href="https://www.instagram.com/epicnational_realty/" class="social-icon icon-instagram" title="Instagram">
+              <i class="fa fa-instagram"></i>
+            </a>
+
+          </div>
+        </div>
+        <div {{bind-attr class="authSession.currentUser:pull-left:pull-right" }}>
+          {{#if authSession.currentUser }}
+          <ul class="navbar-top-nav clearfix visible-xs">
+            <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+            <li> {{link-to 'BOARDS' 'boards'}} </li>
+            {{#if authSession.currentUser.is_agent }}
+            <li> {{link-to 'CLIENTS' 'people'}} </li>
+            {{else}}
+           {{/if}} </ul> {{/if}} {{rs-nav-menu pages=pages menu='top' user=authSession.currentUser editing=isEditingPage showLogin='showLoginModal' showSignup='showSignupModal'}}
+         </div> {{#if authSession.currentUser}}
+        <div class="dropdowns-container pull-right clearfix">
+          <div class="dropdown account-dropdown visible-xs visible-sm">
+            <a href="#" id="account-dropdown" class="dropdown-toggle" data-toggle="dropdown"> <img {{bind-attr src=authSession.currentUser.picture.thumb.url}} alt="" class="img-circle">
+              <span class="angle"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="account-dropdown" role="menu"> {{#if authSession.currentUser.is_agent }}
+              <li role='presentation'> {{#link-to 'agent_profiles.show' authSession.agent_profile_id role='menuitem' tabindex='-1'}}
+                <span>Agent Profile</span> {{/link-to}} </li> {{/if}}
+              <li role='presentation'> {{#link-to 'profile.edit' role='menuitem' tabindex='-1'}}
+                <span>Profile</span> {{/link-to}} </li>
+              <li role='presentation'> {{#link-to 'notifications.edit' role='menuitem' tabindex='-1'}}
+                <span>Settings</span> {{/link-to}} </li>
+              <li role='presentation'>
+                <a {{action "invalidateSession" on="click" }} role='menuitem'>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> {{/if}}
+      </div>
+    </div>
+    <div class="navbar-inner sticky-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle pull-right collapsed" data-target="#main-navbar-container" data-toggle="collapse" type="button" aria-expanded="false">
+
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+          </button>
+          {{#link-to 'home' class='text-uppercase navbar-brand'}} {{view 'bg_image' backgroundImage=currentSite.logo_url}} {{/link-to}}
+
+          <div class="navbar-right visible-sm">
+           <!-- <ul class="c-nav-menu nav navbar-nav pull-right hidden-sm"> -->
+          <li> <a href="https://join.me/epicnational" style="padding: 25px 15px;"> <img src="https://s3.amazonaws.com/rs-themes/epicnr/unnamed+(2)-iloveimg-resized+(4).png"> </a> </li>
+          <li>{{link-to 'HOME SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+          <li>{{link-to 'Our Areas' 'page' 'our-areas'}}</li>
+          {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/page/epic-value-reports' title='Epic Value Reports' groups='epic-value-reports' editing=isEditingPage isMega=false}} /
+          <li>{{link-to 'Contact' 'page' 'contact'}}</li>
+
+
+          <!-- </ul>    -->
+         </div>
+
+
+        </div>
+        <div id="main-navbar-container" class="collapse navbar-collapse" aria-expanded='false'> {{#if authSession.currentUser }}
+          <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+
+            <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+            <li> {{link-to 'BOARDS' 'boards'}} </li> {{#if authSession.currentUser.is_agent }}
+            <li> {{link-to 'CLIENTS' 'people'}} </li> {{else}}
+            {{/if}}
+            <li class="dropdown megamenu-container hidden-xs">
+              <a class="wl-header__profile-img dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">
+                <div class="row">
+                  <div class="col-md-8 hidden-sm"> <img {{bind-attr src=authSession.currentUser.picture.medium.url}} class="img-circle" style="width: 50px; height: 50px;"> </div>
+                  <div class="col-sm-4 col-xs-12" style="font-size: 22px;"> <i class="fa fa-bars"></i> </div>
+                </div>
+              </a>
+              <div class="dropdown-menu megamenu" role="menu">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-12 text-right"> <a href="#" class="megamenu-title">My Account</a>
+                      <ul> {{#if authSession.currentUser.is_agent }}
+                        <li> {{#link-to 'agent_profiles.show' authSession.agent_profile_id}}
+                          <span>View Agent Profile</span> {{/link-to}} </li> {{/if}}
+                        <li> {{#link-to 'profile.edit'}}
+                          <span>Personal Profile</span> {{/link-to}} </li>
+                        <li> {{#link-to 'notifications.edit'}}
+                          <span>Account Settings</span> {{/link-to}} </li>
+                        <li>
+
+                          <a {{action "invalidateSession" on="click" }} role='menuitem'>
+                            <span>Sign Out</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          {{/if}}
+
+      <ul class="c-nav-menu nav navbar-nav pull-right hidden-sm">
+          <li> <a href="https://join.me/epicnational" style="padding: 25px 15px;"> <img src="https://s3.amazonaws.com/rs-themes/epicnr/unnamed+(2)-iloveimg-resized+(4).png"> </a> </li>
+            <li>{{link-to 'HOME SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+            <li>{{link-to 'Our Areas' 'page' 'our-areas'}}</li>
+            {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/page/epic-value-reports' title='Epic Value Reports' groups='epic-value-reports' editing=isEditingPage isMega=false}}
+            <li>{{link-to 'Contact' 'page' 'contact'}}</li>
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+################################
+<header id="header" role="banner">
+  <nav class="navbar navbar-white navbar-smaller animated-dropdown btt-dropdown" role="navigation">
+    <div class="navbar-top navbar-white clearfix">
+      <div class="container-fluid">
+        <div {{bind-attr class="authSession.currentUser:pull-left:pull-right"}}>
+          {{#if authSession.currentUser }}
+            <ul class="navbar-top-nav clearfix visible-xs">
+              <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+              <li>{{link-to 'BOARDS' 'boards'}}</li>
+              {{#if authSession.currentUser.is_agent}}
+                <li>{{link-to 'CLIENTS' 'people'}}</li>
+              {{else}}
+                <li>
+                  {{#if authSession.currentUser.current_agent_profile_id}}
+                    {{link-to 'MY AGENT' 'my_agent'}}
+                  {{else}}
+                    {{link-to 'FIND AN AGENT' 'agents'}}
+                  {{/if}}
+                </li>
+              {{/if}}
+            </ul>
+          {{/if}}
+          {{#rs-nav-menu tagName='div' isDropdownMenu=true menu='top' user=authSession.currentUser editing=isEditingPage showLogin='showLoginModal' showSignup='showSignupModal'}}
+            {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/about' title='About' groups='About' editing=isEditingPage isMega=false}}
+            <div class="pull-left">
+                 <a href="https://builder-preview.realsavvy.com/_preview/561/communities">The Neighborator</a>
+            </div>
+            {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/services' title='Services' groups='Services' editing=isEditingPage isMega=false}}
+            {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/about-us' title='About Us' groups='About-Us' editing=isEditingPage isMega=false}}
+            <div class="pull-left">
+                   <a href="https://builder-preview.realsavvy.com/_preview/561/blog">Blog</a>
+                    </div>
+            <div class="pull-left">
+                  <a href="https://builder-preview.realsavvy.com/_preview/561/contact">Contact</a>
+            </div>
+          {{/rs-nav-menu}}
+        </div>
+        {{#if authSession.currentUser}}
+          <div class="dropdowns-container pull-right clearfix">
+            <div class="dropdown account-dropdown visible-xs visible-sm">
+              <a href="#" id="account-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                <img {{bind-attr src=authSession.currentUser.picture.thumb.url}} class="img-circle">
+                <span class="angle"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="account-dropdown" role="menu">
+                {{#if authSession.currentUser.is_agent}}
+                  <li role='presentation'>
+                    {{#link-to 'agent_profiles.show' authSession.agent_profile_id role='menuitem' tabindex='-1'}}
+                      <span>Agent Profile</span>
+                    {{/link-to}}
+                  </li>
+                {{/if}}
+                <li role='presentation'>
+                  {{#link-to 'profile.edit' role='menuitem' tabindex='-1'}}
+                    <span>Profile</span>
+                  {{/link-to}}
+                </li>
+                <li role='presentation'>
+                  {{#link-to 'notifications.edit' role='menuitem' tabindex='-1'}}
+                    <span>Settings</span>
+                  {{/link-to}}
+                </li>
+                <li role='presentation'>
+                  <a {{action "invalidateSession" on="click"}} role='menuitem'>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="navbar-inner sticky-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle pull-right collapsed" data-target="#main-navbar-container" data-toggle="collapse" type="button" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://www.lifeny.com" class="text-uppercase navbar-brand">
+            {{view 'bg_image' backgroundImage=currentSite.logo_url}}
+          </a>
+          <div class="navbar-left navbar-btn rs-market-picker-container">{{rs-market-picker type='button' selected='changeMarket' buttonClassNames='square btn-transparent'}}</div>
+          <div class="navbar-right visible-sm">
+            {{#rs-nav-menu tagName='div' isDropdownMenu=true menu='top' user=authSession.currentUser editing=isEditingPage showLogin='showLoginModal' showSignup='showSignupModal'}}
+              <li><a href="https://builder-preview.realsavvy.com/_preview/561/communities">The Neighborator  </a></li>
+              {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/services' title='Services' groups='Services' editing=isEditingPage isMega=false}}
+            	{{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/about-us' title='About Us' groups='About-Us' editing=isEditingPage isMega=false}}
+          		<li><a href="https://builder-preview.realsavvy.com/_preview/561/blog">Blog</a></li>
+           		<li><a href="https://builder-preview.realsavvy.com/_preview/561/contact">Contact</a></li>
+            {{/rs-nav-menu}}
+          </div>
+        </div>
+        <div id="main-navbar-container" class="collapse navbar-collapse" aria-expanded='false'>
+          {{#if authSession.currentUser}}
+            <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+              <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+              <li>{{link-to 'BOARDS' 'boards'}}</li>
+              {{#if authSession.currentUser.is_agent }}
+                <li>{{link-to 'CLIENTS' 'people'}}</li>
+              {{else}}
+                <li>
+                  {{#if authSession.currentUser.current_agent_profile_id }}
+                    {{link-to 'MY AGENT' 'my_agent'}}
+                  {{else}}
+                    {{link-to 'FIND AN AGENT' 'agents'}}
+                  {{/if}}
+                </li>
+              {{/if}}
+              <li class="dropdown megamenu-container hidden-xs">
+                <a class="wl-header__profile-img dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">
+                  <div class="row">
+                    <div class="col-md-8 hidden-sm">
+                      <img {{bind-attr src=authSession.currentUser.picture.medium.url}} class="img-circle">
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                      <div class="wl-header__dropdown-toggle"><i class="fa fa-bars"></i></div>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu megamenu" role="menu">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-sm-12 text-right">
+                        <a href="#" class="megamenu-title">My Account</a>
+                        <ul>
+                          {{#if authSession.currentUser.is_agent }}
+                            <li>
+                              {{#link-to 'agent_profiles.show' authSession.agent_profile_id}}
+                                <span>View Agent Profile</span>
+                              {{/link-to}}
+                            </li>
+                          {{/if}}
+                          <li>
+                            {{#link-to 'profile.edit'}}
+                              <span>Personal Profile</span>
+                            {{/link-to}}
+                          </li>
+                          <li>
+                            {{#link-to 'notifications.edit'}}
+                              <span>Account Settings</span>
+                            {{/link-to}}
+                          </li>
+                          <li>
+                            <a {{action "invalidateSession" on="click" }} role='menuitem'>
+                              <span>Sign Out</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          {{/if}}
+          {{#rs-nav-menu menu='bottom' user=authSession.currentUser editing=isEditingPage}}
+              <li><a href="https://builder-preview.realsavvy.com/_preview/561/communities">The Neighborator  </a></li>
+            	{{rs-nav-mega-menu href='/services' title='Services' groups='Services' editing=isEditingPage isMega=false}}
+            	{{rs-nav-mega-menu href='/about-us' title='About Us' groups='About-Us' editing=isEditingPage isMega=false}}
+              <li><a href="https://builder-preview.realsavvy.com/_preview/561/blog">Blog</a></li>
+           		<li><a href="https://builder-preview.realsavvy.com/_preview/561/contact">Contact</a></li>
+            {{/rs-nav-menu}}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+#######################
+<header id="header" role="banner">
+  <nav class="navbar navbar-white navbar-smaller animated-dropdown btt-dropdown" role="navigation">
+    <div class="navbar-top navbar-white clearfix">
+      <div class="container-fluid">
+        <div {{bind-attr class="authSession.currentUser:pull-left:pull-right"}}>
+          {{#if authSession.currentUser }}
+            <ul class="navbar-top-nav clearfix visible-xs">
+              <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+              <li>{{link-to 'BOARDS' 'boards'}}</li>
+              {{#if authSession.currentUser.is_agent}}
+                <li>{{link-to 'CLIENTS' 'people'}}</li>
+              {{else}}
+                <li>
+                  {{#if authSession.currentUser.current_agent_profile_id}}
+                    {{link-to 'MY AGENT' 'my_agent'}}
+                  {{else}}
+                    {{link-to 'FIND AN AGENT' 'agents'}}
+                  {{/if}}
+                </li>
+              {{/if}}
+            </ul>
+          {{/if}}
+          {{#rs-nav-menu tagName='div' isDropdownMenu=true menu='top' user=authSession.currentUser editing=isEditingPage showLogin='showLoginModal' showSignup='showSignupModal'}}
+            {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/about' title='About' groups='About' editing=isEditingPage isMega=false}}
+          {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/properties' title='Properties' groups='Properties' editing=isEditingPage isMega=false}}
+          <div class="pull-left">
+                 <a href="https://www.thewiselivinggroup.com/blog">Blog   </a>
+                  </div>
+          <div class="pull-left">
+                 <a href="https://www.thewiselivinggroup.com/events">Events</a>
+                  </div>
+          {{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/contact' title='Contact' groups='Contact' editing=isEditingPage isMega=false}}
+          {{/rs-nav-menu}}
+        </div>
+        {{#if authSession.currentUser}}
+          <div class="dropdowns-container pull-right clearfix">
+            <div class="dropdown account-dropdown visible-xs visible-sm">
+              <a href="#" id="account-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                <img {{bind-attr src=authSession.currentUser.picture.thumb.url}} class="img-circle">
+                <span class="angle"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="account-dropdown" role="menu">
+                {{#if authSession.currentUser.is_agent}}
+                  <li role='presentation'>
+                    {{#link-to 'agent_profiles.show' authSession.agent_profile_id role='menuitem' tabindex='-1'}}
+                      <span>Agent Profile</span>
+                    {{/link-to}}
+                  </li>
+                {{/if}}
+                <li role='presentation'>
+                  {{#link-to 'profile.edit' role='menuitem' tabindex='-1'}}
+                    <span>Profile</span>
+                  {{/link-to}}
+                </li>
+                <li role='presentation'>
+                  {{#link-to 'notifications.edit' role='menuitem' tabindex='-1'}}
+                    <span>Settings</span>
+                  {{/link-to}}
+                </li>
+                <li role='presentation'>
+                  <a {{action "invalidateSession" on="click"}} role='menuitem'>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="navbar-inner sticky-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle pull-right collapsed" data-target="#main-navbar-container" data-toggle="collapse" type="button" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://www.thewiselivinggroup.com" class="text-uppercase navbar-brand">
+            {{view 'bg_image' backgroundImage=currentSite.logo_url}}
+          </a>
+          <div class="navbar-left navbar-btn rs-market-picker-container">{{rs-market-picker type='button' selected='changeMarket' buttonClassNames='square btn-transparent'}}</div>
+          <div class="navbar-right visible-sm">
+            {{#rs-nav-menu tagName='div' isDropdownMenu=true menu='top' user=authSession.currentUser editing=isEditingPage showLogin='showLoginModal' showSignup='showSignupModal'}}
+            	{{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/about' title='About' groups='About' editing=isEditingPage isMega=false}}
+            	{{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/properties' title='Properties' groups='Properties' editing=isEditingPage isMega=false}}
+          		<li><a href="https://www.thewiselivinggroup.com/blog">Blog  </a></li>
+           		<li><a href="https://www.thewiselivinggroup.com/events">Events</a></li>
+          		{{rs-nav-mega-menu tagName='div' class='dropdown pull-left' href='/contact' title='Contact' groups='Contact' editing=isEditingPage isMega=false}}
+            {{/rs-nav-menu}}
+          </div>
+        </div>
+        <div id="main-navbar-container" class="collapse navbar-collapse" aria-expanded='false'>
+          {{#if authSession.currentUser}}
+            <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+              <li>{{link-to 'SEARCH' 'browse' currentSite.defaultBrowseStateCode currentSite.defaultBrowseCity (query-params showFilters=false isMapMode=true) active=isBrowse}}</li>
+              <li>{{link-to 'BOARDS' 'boards'}}</li>
+              {{#if authSession.currentUser.is_agent }}
+                <li>{{link-to 'CLIENTS' 'people'}}</li>
+              {{else}}
+                <li>
+                  {{#if authSession.currentUser.current_agent_profile_id }}
+                    {{link-to 'MY AGENT' 'my_agent'}}
+                  {{else}}
+                    {{link-to 'FIND AN AGENT' 'agents'}}
+                  {{/if}}
+                </li>
+              {{/if}}
+              <li class="dropdown megamenu-container hidden-xs">
+                <a class="wl-header__profile-img dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">
+                  <div class="row">
+                    <div class="col-md-8 hidden-sm">
+                      <img {{bind-attr src=authSession.currentUser.picture.medium.url}} class="img-circle">
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                      <div class="wl-header__dropdown-toggle"><i class="fa fa-bars"></i></div>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu megamenu" role="menu">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-sm-12 text-right">
+                        <a href="#" class="megamenu-title">My Account</a>
+                        <ul>
+                          {{#if authSession.currentUser.is_agent }}
+                            <li>
+                              {{#link-to 'agent_profiles.show' authSession.agent_profile_id}}
+                                <span>View Agent Profile</span>
+                              {{/link-to}}
+                            </li>
+                          {{/if}}
+                          <li>
+                            {{#link-to 'profile.edit'}}
+                              <span>Personal Profile</span>
+                            {{/link-to}}
+                          </li>
+                          <li>
+                            {{#link-to 'notifications.edit'}}
+                              <span>Account Settings</span>
+                            {{/link-to}}
+                          </li>
+                          <li>
+                            <a {{action "invalidateSession" on="click" }} role='menuitem'>
+                              <span>Sign Out</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          {{/if}}
+          {{#rs-nav-menu menu='bottom' user=authSession.currentUser editing=isEditingPage}}
+            	{{rs-nav-mega-menu href='/about' title='About' groups='About' editing=isEditingPage isMega=false}}
+            	{{rs-nav-mega-menu href='/properties' title='Properties' groups='Properties' editing=isEditingPage isMega=false}}
+          		<li><a href="https://www.thewiselivinggroup.com/blog">Blog  </a></li>
+         		<li><a href="https://www.thewiselivinggroup.com/events">Events</a></li>
+          		{{rs-nav-mega-menu href='/contact' title='Contact' groups='Contact' editing=isEditingPage isMega=false}}
+            {{/rs-nav-menu}}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

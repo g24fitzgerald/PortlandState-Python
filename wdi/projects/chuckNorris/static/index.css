@@ -1,0 +1,647 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 1px;
+}
+
+body {
+  display: flex;
+  background: #9c6da4;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+body > * {
+  vertical-align: middle;
+}
+
+#wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 415rem;
+  margin: 100rem 0 0 0;
+}
+
+blockquote {
+  position: absolute;
+  top: -100rem;
+  width: 100%;
+  text-align: center;
+  color: #462e4a;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 20rem;
+  text-shadow: 0 1px 0 #ad86b4;
+}
+blockquote:before {
+  content: open-quote;
+}
+blockquote:after {
+  content: close-quote;
+}
+button {
+  position: absolute;
+  top: -20rem;
+  background-color: #905d9b;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: #462e4a;
+  font-size: 16rem;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 20rem;
+  text-shadow: 0 1px 0 #ad86b4;
+}
+#earth {
+  background-image: url('./images/dino.png');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+  display: inline-block;
+  width: 1500rem;
+  height: 415rem;
+  animation: scene 2s ease-in-out alternate infinite;
+  transform-origin: 660rem 415rem;
+}
+
+#scene {
+  position: relative;
+  display: inline-block;
+  width: 800rem;
+  height: 415rem;
+  border-bottom: solid 10rem #905d9b;
+  animation: scene 2s ease-in-out alternate infinite;
+  transform-origin: 660rem 415rem;
+}
+#scene .mirror {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 130rem;
+  width: 180rem;
+  height: 180rem;
+  border: solid 22rem #905d9b;
+  border-radius: 5rem;
+}
+#scene .mirror:before, #scene .mirror:after {
+  content: "";
+  position: absolute;
+  background: #905d9b;
+  width: 2rem;
+  transform: rotateZ(45deg);
+  border-radius: 2rem;
+}
+#scene .mirror:before {
+  top: 5rem;
+  left: 35rem;
+  height: 50rem;
+  box-shadow: 95rem 10rem 0 0 #905d9b, 105rem 5rem 0 0 #905d9b;
+}
+#scene .mirror:after {
+  top: 15rem;
+  left: 55rem;
+  height: 100rem;
+  box-shadow: 10rem 10rem 0 0 #905d9b;
+}
+#scene .desk {
+  position: absolute;
+  background: #905d9b;
+  top: 260rem;
+  left: 58rem;
+  width: 330rem;
+  height: 110rem;
+  border: solid 20rem #905d9b;
+  box-shadow: inset 0 0 0 4rem #9c6da4;
+}
+#scene .desk:before, #scene .desk:after {
+  content: "";
+  position: absolute;
+  background: #905d9b;
+}
+#scene .desk:before {
+  top: -42rem;
+  left: -33rem;
+  width: 356rem;
+  height: 18rem;
+  border-radius: 9rem;
+}
+#scene .desk:after {
+  top: 94rem;
+  left: -9rem;
+  width: 18rem;
+  height: 28rem;
+  border-radius: 0 0 9rem 9rem;
+  box-shadow: 290rem 0 0 0 #905d9b;
+}
+#scene .desk .item {
+  position: absolute;
+  background: #905d9b;
+}
+#scene .desk .item.item-1 {
+  top: -91rem;
+  left: -10rem;
+  width: 36rem;
+  height: 45rem;
+}
+#scene .desk .item.item-1:before {
+  content: "";
+  position: absolute;
+  background: #905d9b;
+  top: -24rem;
+  left: 10rem;
+  width: 16rem;
+  height: 20rem;
+}
+#scene .desk .item.item-2 {
+  top: -66rem;
+  left: 205rem;
+  width: 36rem;
+  height: 20rem;
+}
+#scene .desk .item.item-3 {
+  top: -91rem;
+  left: 255rem;
+  width: 34rem;
+  height: 45rem;
+}
+#scene .vase {
+  position: absolute;
+  background: #905d9b;
+  top: 275rem;
+  left: 420rem;
+  width: 126rem;
+  height: 126rem;
+  border-top-left-radius: 63rem 50rem;
+  border-top-right-radius: 63rem 50rem;
+  border-bottom-left-radius: 40rem 76rem;
+  border-bottom-right-radius: 40rem 76rem;
+}
+#scene .vase:before, #scene .vase:after {
+  content: "";
+  position: absolute;
+  background: #905d9b;
+}
+#scene .vase:before {
+  top: -8rem;
+  left: 49rem;
+  width: 28rem;
+  height: 16rem;
+}
+#scene .vase:after {
+  top: -20rem;
+  left: 43rem;
+  width: 40rem;
+  height: 10rem;
+  border-radius: 5rem;
+}
+#scene .vase .stem {
+  position: absolute;
+}
+#scene .vase .stem:before {
+  content: "";
+  position: absolute;
+  background: #905d9b;
+  border-radius: 50%;
+}
+#scene .vase .stem.stem-1 {
+  top: -210rem;
+  left: 3rem;
+  width: 60rem;
+  height: 190rem;
+  border-top: solid 2rem #905d9b;
+  border-right: solid 4rem #905d9b;
+  border-top-right-radius: 60rem 190rem;
+}
+#scene .vase .stem.stem-1:before {
+  top: 10rem;
+  left: 5rem;
+  width: 8rem;
+  height: 8rem;
+  box-shadow: 10rem 16rem 0 2rem #905d9b, 24rem -5rem 0 -1rem #905d9b, 19rem 36rem 0 0 #905d9b, 36rem 12rem 0 1rem #905d9b, 24rem 56rem 0 1rem #905d9b, 40rem 34rem 0 1rem #905d9b, 29rem 74rem 0 -1rem #905d9b;
+}
+#scene .vase .stem.stem-2 {
+  top: -160rem;
+  left: 64rem;
+  width: 30rem;
+  height: 140rem;
+  border-top: solid 2rem #905d9b;
+  border-left: solid 6rem #905d9b;
+  border-top-left-radius: 30rem 140rem;
+}
+#scene .vase .stem.stem-2:before {
+  top: 5rem;
+  left: 0;
+  width: 8rem;
+  height: 8rem;
+  box-shadow: 18rem 12rem 0 2rem #905d9b, -6rem 18rem 0 0 #905d9b, 12rem 32rem 0 0 #905d9b, -8rem 36rem 0 -1rem #905d9b, 8rem 48rem 0 0 #905d9b, 8rem 68rem 0 2rem #905d9b, 4rem 88rem 0 -1rem #905d9b;
+}
+#scene .cabinet {
+  position: absolute;
+  top: 0;
+  left: 575rem;
+  width: 188rem;
+  height: 401rem;
+  border: solid 12rem #905d9b;
+  border-bottom: none;
+}
+#scene .cabinet .book {
+  position: absolute;
+  background: #905d9b;
+  transform-origin: bottom left;
+}
+#scene .cabinet .shelf {
+  position: absolute;
+  left: 0;
+  width: 164rem;
+  height: 88rem;
+  border-bottom: solid 12rem #905d9b;
+}
+#scene .cabinet .shelf.shelf-1 {
+  top: 0;
+}
+#scene .cabinet .shelf.shelf-1 .book-1 {
+  top: 7rem;
+  left: 14rem;
+  width: 16rem;
+  height: 65rem;
+}
+#scene .cabinet .shelf.shelf-1 .book-2 {
+  top: 7rem;
+  left: 34rem;
+  width: 23rem;
+  height: 65rem;
+}
+#scene .cabinet .shelf.shelf-1 .book-3 {
+  top: 7rem;
+  left: 94rem;
+  width: 14rem;
+  height: 65rem;
+  transform: rotateZ(-30deg);
+}
+#scene .cabinet .shelf.shelf-1 .book-4 {
+  top: 7rem;
+  left: 152rem;
+  width: 12rem;
+  height: 65rem;
+  transform: rotateZ(-60deg);
+}
+#scene .cabinet .shelf.shelf-2 {
+  top: 88rem;
+}
+#scene .cabinet .shelf.shelf-2 .book-1 {
+  top: 7rem;
+  left: 26rem;
+  width: 8rem;
+  height: 65rem;
+  transform: rotateZ(-20deg);
+}
+#scene .cabinet .shelf.shelf-2 .book-2 {
+  top: 7rem;
+  left: 38rem;
+  width: 8rem;
+  height: 65rem;
+  transform: rotateZ(-20deg);
+}
+#scene .cabinet .shelf.shelf-2 .book-3 {
+  top: 32rem;
+  left: 110rem;
+  width: 14rem;
+  height: 40rem;
+}
+#scene .cabinet .shelf.shelf-2 .book-4 {
+  top: 7rem;
+  left: 128rem;
+  width: 10rem;
+  height: 65rem;
+}
+#scene .cabinet .shelf.shelf-2 .book-5 {
+  top: 7rem;
+  left: 142rem;
+  width: 15rem;
+  height: 65rem;
+}
+#scene .cabinet .drawer {
+  position: absolute;
+  left: 0;
+  width: 164rem;
+  height: 88rem;
+  border-bottom: solid 12rem #905d9b;
+}
+#scene .cabinet .drawer:before, #scene .cabinet .drawer:after {
+  content: "";
+  position: absolute;
+}
+#scene .cabinet .drawer:before {
+  top: 11rem;
+  left: 11rem;
+  width: 142rem;
+  height: 54rem;
+  border: solid 2rem #905d9b;
+}
+#scene .cabinet .drawer:after {
+  background: #905d9b;
+  top: 33rem;
+  left: 60rem;
+  width: 40rem;
+  height: 10rem;
+}
+#scene .cabinet .drawer.drawer-1 {
+  top: 176rem;
+}
+#scene .cabinet .drawer.drawer-2 {
+  top: 264rem;
+}
+
+#chuck-norris {
+  position: absolute;
+  z-index: 1;
+  top: 240rem;
+  left: 140rem;
+  transform: rotateZ(6deg);
+}
+#chuck-norris .hat {
+  position: absolute;
+  background: #512a08;
+  width: 55rem;
+  height: 100rem;
+  border-top-left-radius: 55rem 25rem;
+  border-bottom-left-radius: 55rem 30rem;
+}
+#chuck-norris .hat:before {
+  content: "";
+  position: absolute;
+  background: #3a1e05;
+  top: -38rem;
+  left: 35rem;
+  width: 55rem;
+  height: 190rem;
+  border-top-left-radius: 55rem 50rem;
+  border-bottom-left-radius: 55rem 140rem;
+}
+#chuck-norris .face {
+  position: absolute;
+  top: 25rem;
+  left: 90rem;
+  width: 36rem;
+  height: 92rem;
+  border-style: solid;
+  border-color: #f7ba85 #f7ba85 transparent transparent;
+  border-width: 79rem 36rem 13rem 0;
+}
+#chuck-norris .face:before, #chuck-norris .face:after {
+  content: "";
+  position: absolute;
+}
+#chuck-norris .face:before {
+  background: #f7ba85;
+  top: -79rem;
+  left: 36rem;
+  width: 16rem;
+  height: 92rem;
+  border-bottom-right-radius: 14rem;
+}
+#chuck-norris .face:after {
+  background: #f7ba85;
+  top: -92rem;
+  left: 8rem;
+  width: 26rem;
+  height: 13rem;
+  border-radius: 13rem 13rem 0 0;
+}
+#chuck-norris .eye {
+  position: absolute;
+  background: #515be2;
+  top: 75rem;
+  left: 100rem;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 12rem;
+  animation: eye 4s 1s linear infinite;
+}
+#chuck-norris .hair {
+  position: absolute;
+  background: #ef4a17;
+  z-index: -1;
+  top: -15rem;
+  left: 90rem;
+  width: 52rem;
+  height: 40rem;
+  border-top-right-radius: 12rem;
+}
+#chuck-norris .beard {
+  position: absolute;
+  background: #ef4a17;
+  top: 2rem;
+  left: 142rem;
+  width: 75rem;
+  height: 100rem;
+  border-radius: 0 50rem 50rem 0;
+}
+#chuck-norris .beard:before, #chuck-norris .beard:after {
+  content: "";
+  position: absolute;
+  background: #f7ba85;
+}
+#chuck-norris .beard:before {
+  top: 35rem;
+  left: 70rem;
+  width: 17rem;
+  height: 32rem;
+  z-index: -1;
+}
+#chuck-norris .beard:after {
+  top: 66rem;
+  left: 10rem;
+  width: 14rem;
+  height: 34rem;
+  border-top-right-radius: 14rem;
+}
+#chuck-norris .shirt {
+  position: absolute;
+  background: #0a8407;
+  top: -5rem;
+  left: 235rem;
+  width: 47rem;
+  height: 120rem;
+  border-radius: 60rem 0 0 60rem;
+  box-shadow: inset -6rem 0 0 0 #0a8407, inset -8rem 0 0 0 #864b92, inset -12rem 0 0 0 #0a8407, inset -14rem 0 0 0 #864b92, inset -18rem 0 0 0 #0a8407, inset -20rem 0 0 0 #864b92;
+}
+#chuck-norris .shirt:before, #chuck-norris .shirt:after {
+  content: "";
+  position: absolute;
+}
+#chuck-norris .shirt:before {
+  top: 0;
+  left: 47rem;
+  width: 88rem;
+  height: 120rem;
+  border-style: solid;
+  border-color: transparent transparent transparent #0a8407;
+  border-width: 39rem 0 39rem 88rem;
+}
+#chuck-norris .shirt:after {
+  background: #087206;
+  z-index: -1;
+  top: 36rem;
+  left: -10rem;
+  width: 15rem;
+  height: 45rem;
+  border-radius: 8rem 0 0 8rem;
+}
+#chuck-norris .arm {
+  position: absolute;
+  background: #087206;
+  top: 30rem;
+  left: 250rem;
+  width: 75rem;
+  height: 36rem;
+  border-radius: 18rem;
+  transform: rotateZ(10deg);
+  transform-origin: left center;
+  animation: arm-top 2s ease-in-out alternate infinite;
+}
+#chuck-norris .arm:before, #chuck-norris .arm:after {
+  content: "";
+  position: absolute;
+}
+#chuck-norris .arm:before {
+  background: #087206;
+  top: 0;
+  right: -10rem;
+  width: 36rem;
+  height: 90rem;
+  border-top-left-radius: 18rem 50rem;
+  border-top-right-radius: 18rem 50rem;
+  border-bottom-left-radius: 18rem;
+  border-bottom-right-radius: 18rem;
+  transform: rotateZ(15deg);
+  transform-origin: top center;
+  box-shadow: 0 10rem 0 0 #f7ba85;
+  animation: arm-bottom 2s ease-in-out alternate infinite;
+}
+#chuck-norris .arm:after {
+  background: #f7ba85;
+  z-index: -1;
+  right: 10rem;
+  bottom: -60rem;
+  width: 75rem;
+  height: 20rem;
+  border-top-left-radius: 40rem 16rem;
+  border-bottom-right-radius: 10rem;
+  transform: rotateZ(-15deg);
+  transform-origin: right center;
+  animation: hand 2s ease-in-out alternate infinite;
+}
+#chuck-norris .pants {
+  position: absolute;
+  background: #3473d8;
+  top: 34rem;
+  left: 370rem;
+  width: 190rem;
+  height: 41rem;
+  border-left: solid 14rem #562a06;
+  border-right: solid 32rem #3a1e05;
+}
+#chuck-norris .pants:before {
+  content: "";
+  position: absolute;
+  top: 20rem;
+  left: 2rem;
+  width: 140rem;
+  height: 2rem;
+  border-top: dashed 2rem #1059ce;
+}
+#chuck-norris .shoes {
+  position: absolute;
+  background: #3a1e05;
+  top: 75rem;
+  left: 490rem;
+  width: 70rem;
+  height: 35rem;
+  border-top-left-radius: 40rem 33rem;
+  transform: rotateZ(-6deg);
+  transform-origin: top center;
+  animation: shoes 2s ease-in-out alternate infinite;
+}
+
+footer {
+  z-index: 2;
+  padding: 25px 0;
+  text-align: center;
+  background-color: #9c6da4;
+}
+
+@keyframes scene {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(-7deg);
+  }
+}
+@keyframes eye {
+  0% {
+    transform: scale(1, 1);
+  }
+  3% {
+    transform: scale(0.2, 1);
+  }
+  6% {
+    transform: scale(1, 1);
+  }
+  9% {
+    transform: scale(0.2, 1);
+  }
+  12% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes arm-top {
+  0% {
+    transform: rotateZ(10deg);
+  }
+  100% {
+    transform: rotateZ(38deg);
+  }
+}
+@keyframes arm-bottom {
+  0% {
+    transform: rotateZ(15deg);
+  }
+  100% {
+    transform: rotateZ(-12deg);
+  }
+}
+@keyframes hand {
+  0% {
+    transform: rotateZ(-15deg);
+  }
+  100% {
+    right: -28rem;
+    bottom: -46rem;
+    transform: rotateZ(-52deg);
+  }
+}
+@keyframes shoes {
+  0% {
+    transform: rotateZ(-6deg);
+  }
+  100% {
+    transform: rotateZ(-13deg);
+  }
+}

@@ -1,0 +1,13 @@
+.galogo {
+  max-width: 100%;
+}
+.scores {
+  font-size: 2em;
+  text-align: center;
+}
+.playerscore span, .computerscore span {
+  display: block;
+}
+.gameButtons button {
+  width: 100%;
+}
