@@ -2,6 +2,7 @@
 '''Learn to Program: The Fundamentals | University of Toranto Computer Science
 2018 Gina Fitzgerald'''
 
+import math
 
 '''1. header'''
 def area_triangle(base, height):
@@ -46,3 +47,17 @@ def semiperimeter(side1, side2, side3):
     12.9
     '''
     return perimeter(side1, side2, side3) / 2
+
+def area_hero(side1, side2, side3):
+    """ (number, number, number) -> float
+
+    Return the area of a triangle with sides of length
+    side1, side2, and side3.
+    >>> area_hero(3,4,5)
+    6.0
+    >>> area_hero(10.5, 6, 9.3)
+    27.731
+    """
+
+    semi = semiperimeter(side1, side2, side3)
+    return math.sqrt(semi * (semi - side1) * (semi - side2)* (semi - side3))
