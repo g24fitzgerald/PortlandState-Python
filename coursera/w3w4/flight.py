@@ -1,4 +1,5 @@
-""" """
+"""Learn to Program: The Fundamentals | University of Toranto Computer Science
+2018 Gina Fitzgerald"""
 
 def report_status(scheduled_time, estimated_time):
     """(number, number) -> str
@@ -9,7 +10,7 @@ def report_status(scheduled_time, estimated_time):
 
     Pre-condition: 0.0 <= scheduled_time < 24
                    0.0 <= estimated_time < 24
-    
+
     >>>report_status(14.3, 14.3)
     "on time"
     >>>report_status(12.5, 11.5)
