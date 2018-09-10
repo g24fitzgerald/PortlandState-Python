@@ -48,12 +48,15 @@ def up_to_vowels(s):
     'FYH'
     '''
 
-    new_str = ''
+    # before_vowel contains all characters found in s[0:i]
+    before_vowel = ''
     i = 0
+
+    # Accumulate the non-voewls at beginning of the string
     while i < len(s) and not (s[i] in 'aeiouAEIOU'):
-        new_str = new_str + s[i]
+        before_vowel = before_vowel + s[i]
         i = i + 1
-    return new_str
+    return before_vowel
 
 def get_answer(prompt):
     ''' (str) -> str
@@ -62,8 +65,6 @@ def get_answer(prompt):
     answer and continue asking until the user gives
     a valid response. Return the answer
 
-    >>> get_answer('yes')
-    'yes'
     '''
 
     answer = input(prompt)
