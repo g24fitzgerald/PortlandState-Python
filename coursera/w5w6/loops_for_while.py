@@ -77,6 +77,8 @@ def shift_left(L):
     #shift last element to value of first
     L[-1] = first_item
 
+### Parallel Lists and Loops
+
 def sum_items(list1, list2):
     ''' (list of number, list of number) -> list of number
 
@@ -92,3 +94,58 @@ def sum_items(list1, list2):
     for i in range(len(list1)):
         summed_list.append(list1[i] + list2[i])
     return summed_list
+
+def count_matches(s1, s2):
+    ''' (str, str) -> int
+
+    Return number of positions in s1 that contain
+    the same character at the corresponding position of s2
+
+    Precondition: len(s1) == len(s2)
+
+    >>> count_matches('ate', 'ape')
+    2
+    >>> count_matches('head', 'hard')
+    2
+    '''
+
+    matches = 0
+    for i in range(len(s1)):
+        if s1[i] == s2[i]:
+            matches = matches + 1
+    return matches
+
+#### Nested Lists and Loops
+def calculate_average(asn_grades):
+    '''(list of lists of [str, number]) -> float
+
+    Return the average of all the grades in asn_grades
+
+    >>> calculate_average([['A1', 80], ['A2', 90]])
+    85.0
+    '''
+
+    total = 0.0
+    for item in asn_grades:
+        total = total + asn_grades[1]
+    return total / len(asn_grades)
+
+def averages(grades):
+    '''(list of lists of number) -> list of float
+
+    Return a new list in which each item is the average of the
+    grades in the inner list at the corresponding position
+    of grades
+
+    >>> averages([[70, 75, 80], [70, 80, 90, 100], [80, 100]])
+    [75.0, 85.0, 90.0]
+    '''
+
+    average_grades = []
+    for grades_list in grades:
+        #calculate the average of grades_list and append to averages
+        total = 0
+        for mark in grades_list:
+            total = total + mark
+        average_grades.append(total/len(grades_list))
+    return average_grades
