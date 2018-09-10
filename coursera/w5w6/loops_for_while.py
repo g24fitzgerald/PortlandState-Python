@@ -114,6 +114,22 @@ def count_matches(s1, s2):
         if s1[i] == s2[i]:
             matches = matches + 1
     return matches
+    
+def make_pairs(list1, list2):
+    ''' (list of str, list of int) -> list of [str, int] list
+
+    Return a new list in which each item is a 2-item list with     the string from thecorresponding position of list1 and the     int from the corresponding position of list2.
+
+    Precondition: len(list1) == len(list2)
+
+    >>> make_pairs(['A', 'B', 'C'], [1, 2, 3])
+    [['A', 1], ['B', 2], ['C', 3]]
+    '''
+
+    pairs = []
+    for i in range(len(list1)):
+        pairs.append([list1[i], list2[i]])
+    return pairs
 
 #### Nested Lists and Loops
 def calculate_average(asn_grades):
