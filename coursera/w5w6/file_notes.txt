@@ -1,0 +1,86 @@
+"""Learn to Program: The Fundamentals | University of Toranto Computer Science
+2018 Gina Fitzgerald"""
+
+###Reading Files
+
+1. The readline approach (to process only part of a file)
+flanders_file = open(flanders_filename, 'r')
+flanders_poem = ''
+
+line = flanders_file.readline()
+while line != "":
+    flanders_poem = flanders_poem + line
+    line = flanders_file.readline()
+
+print(flanders_poem)
+flanders_file.close()
+
+
+
+2. The for line in file approach (When you want to process every line in the file one at a time)
+flanders_file = open(flanders_filename, 'r')
+flanders_poem = ''
+
+for line in flanders_file:
+    flanders_poem = flanders_poem + line
+
+print(flanders_poem)
+flanders_file.close()
+
+
+
+3. The read approach (When you want to read the whole file at once and use it as a single string)
+flanders_file = open(flanders_filename, 'r')
+flanders_poem = flanders_file.read()
+
+print(flanders_poem)
+flanders_file.close()
+
+
+
+4. The readlines approach (When you want to examine each line of the file by index)
+flanders_file = open(flanders_filename, 'r')
+flanders_poem = ''
+
+flanders_list = flanders_file.readlines()
+for line in flanders_list:
+    flanders_poem = flanders_poem + line
+
+print(flanders_poem)
+flanders_file.close()
+
+
+#### Write Files
+Writing To A File Within A Python Program
+In order to write to a file, we use file.write(str). This method writes a string to a file. Method write works like Python's print function, except that it does not add a newline character.
+
+File dialogs
+Module tkinter has a submodule called filedialog. We import it like this:
+
+>>>import tkinter.filedialog
+Function askopenfilename asks the user to select a file to open:
+
+>>>tkinter.filedialog.askopenfilename()
+This function returns the full path to the file, so we can use that when we call function open to open that file.
+
+>>>from_filename = tkinter.filedialog.askopenfilename()
+Function asksaveasfilename asks the user to select a file to save to, and provides a warning if the file already exists.
+
+>>>to_filename = tkinter.filedialog.asksaveasfilename()
+
+Example
+Below is a program that copies a file, but puts "Copy" as the first line of the copied file.
+
+In order to prompt a user for a file.
+
+Now we can open the file we want to read from and get the contents:
+
+from_file = open(from_filename, 'r')
+contents = from_file.read()
+from_file.close()
+And we can open the file we want to write to and write the contents:
+
+to_file = open(to_filename, 'w')
+to_file.write('Copy\n')  # We have to add the newline ourselves.
+to_file.write(contents)  # Now write the contents of the file.
+to_file.close()
