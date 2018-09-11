@@ -77,6 +77,21 @@ def shift_left(L):
     #shift last element to value of first
     L[-1] = first_item
 
+def shift_right(L):
+    ''' (list) -> NoneType
+
+    Shift each item in L one position to the right
+    and shift the last item to the first position
+
+    Precondition: len(L) >= 1
+    '''
+
+    last_item = L[-1]
+
+    for i in range(1, len(L)):
+        L[len(L)-i] = L[len(L)-i - 1]
+    L[0] = last_item
+
 ### Parallel Lists and Loops
 
 def sum_items(list1, list2):
@@ -114,7 +129,7 @@ def count_matches(s1, s2):
         if s1[i] == s2[i]:
             matches = matches + 1
     return matches
-    
+
 def make_pairs(list1, list2):
     ''' (list of str, list of int) -> list of [str, int] list
 
