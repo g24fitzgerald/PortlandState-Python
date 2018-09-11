@@ -84,3 +84,13 @@ to_file = open(to_filename, 'w')
 to_file.write('Copy\n')  # We have to add the newline ourselves.
 to_file.write(contents)  # Now write the contents of the file.
 to_file.close()
+
+
+
+
+
+########Notes on Developing a a Program -showing grade distribution from a file
+Top Down Design-break down steps, decide how to store data 
+1. Read Grades
+2. Count number of grades per range
+3. write the histogram to file
