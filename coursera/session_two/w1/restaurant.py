@@ -10,7 +10,7 @@
 # ratings sorted from highest to lowest
 
 '''Process: how to keep track of data
-A. list out types of data we need to track
+A. list out foods of data we need to track
     1. restaurants and their scores
     Georgie Porgie: 87
     Queen St. Cafe: 82
@@ -114,16 +114,31 @@ def read_restaurants(file):
     cuisine_to_names = {}
 
     # accumulate data in dictionary name_to_rating
-    # accumulate data in dictionary name_to_rating
     line = file.readline()
 
     while line != '':
+
+        # build name_to_rating dictionary
         restaurant_name = line.rstrip('%\n')
         line = file.readline() # move to next line- rating
         name_to_rating[restaurant_name] = int(line.rstrip('%\n'))
+
+        # build price_to_names dictionary
         line = file.readline() # move to $$
-        line = file.readline() # move to cuisine type
+        price_to_names[line.rstrip('\n')].append(restaurant_name)
+
+        #build cuisine_to_names dictionary
+        line = file.readline() # move to cuisine food
+        cuisine = line.rstrip('\n').split(',') #make array of cuisine foods
+        for food in cuisine:
+            # case where key is not in dict
+            if food not in cuisine_to_names:
+                cuisine_to_names[food] = [restaurant_name]
+            # case where key is already in dict
+            else:
+                cuisine_to_names[food].append(restaurant_name)
+
         line = file.readline() # move to \n
         line = file.readline() # move to new restaurant name
-            
-    return name_to_rating
+
+    return (name_to_rating, price_to_names, cuisine_to_names)
