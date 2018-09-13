@@ -78,3 +78,52 @@ def restaurant_recs(file, price, cuisine_list):
     >>> restaurant_recs(file, '$', ['Chinese', 'Thai'])
     [[82, 'Queen St. Cafe'], [71, 'Dumplings R Us']]
     '''
+
+    # Read file build data structures
+    # a dict of {restaurant name: ratings}
+    # a dict of {price: list of restaurant names}
+    # a dict of {cuisine: list of restaurant names}
+    name_to_rating, price_to_names, cuisine_to_names = read_restaurants(file)
+
+
+    # Look for price or cuisine first?
+    # Price: look up the list of restaurant names for the requested price range
+
+
+    # Now we have a list of restuarants in hte price range
+    # Need a new list of retaurants that serve ond of the cuisines
+
+
+    # Now we have a list of restaurants in the right price range and seve required cuisine
+    # Need to look at ratings and sort list
+
+
+    # Return sorted list
+
+def read_restaurants(file):
+    ''' (file) -> (dict, dict, dict)
+
+    Reads file, returns touple of 3 dictionaries based on information from file
+    - a dict of {restaurant name: ratings}
+    - a dict of {price: list of restaurant names}
+    - a dict of {cuisine: list of restaurant names}
+    '''
+
+    name_to_rating = {}
+    price_to_names = {'$': [], '$$': [], '$$$': [], '$$$$': []}
+    cuisine_to_names = {}
+
+    # accumulate data in dictionary name_to_rating
+    # accumulate data in dictionary name_to_rating
+    line = file.readline()
+
+    while line != '':
+        restaurant_name = line.rstrip('%\n')
+        line = file.readline() # move to next line- rating
+        name_to_rating[restaurant_name] = int(line.rstrip('%\n'))
+        line = file.readline() # move to $$
+        line = file.readline() # move to cuisine type
+        line = file.readline() # move to \n
+        line = file.readline() # move to new restaurant name
+            
+    return name_to_rating
