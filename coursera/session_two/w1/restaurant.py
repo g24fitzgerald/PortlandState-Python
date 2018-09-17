@@ -88,18 +88,57 @@ def restaurant_recs(file, price, cuisine_list):
 
     # Look for price or cuisine first?
     # Price: look up the list of restaurant names for the requested price range
+    names_matching_price = price_to_names[price]
 
-
-    # Now we have a list of restuarants in hte price range
-    # Need a new list of retaurants that serve ond of the cuisines
-
+    # Now we have a list of restuarants in the price range
+    # Need a new list of retaurants that serve kind of the cuisines
+    names_final = filter_by_cuisine(names_matching_price, cuisine_to_names, cuisine_list)
 
     # Now we have a list of restaurants in the right price range and seve required cuisine
     # Need to look at ratings and sort list
-
+    result = build_rating_list(name_to_rating, names_final)
 
     # Return sorted list
 
+def build_rating_list(name_to_rating, names_final):
+    '''(dict of {str: int}, list of str) -> list of str
+    Return list of lists of restaurant and ratings sorted by rating
+
+    >>> ratings = { 'Georgie Porgie': 87,
+                    'Queen St. Cafe': 82,
+                    'Dumplings R Us': 71,
+                    'Mexican Grill': 85,
+                    'Deep Fried Everything': 52}
+    >>> names = ['Queen St. Cafe', 'Dumplings R Us']
+    >>> build_rating_list()
+    [[82, 'Queen St. Cafe'], [71, 'Dumplings R Us']]
+    '''
+    final = []
+    for name in names_final:
+        final.append([name_to_rating[name], name ])
+    return final.sort()
+
+def filter_by_cuisine(names_matching_price, cuisine_to_names, cuisine_list):
+    '''(list of str, dict of {str: list of str}), list of str -> list of str
+
+    Return list of str matching
+
+    >>> names = ['Queen St. Cafe', 'Dumplings R Us', 'Deep Fried Everything']
+    >>> cuis = 'Canadian': ['Georgie Porgie'],
+                'Pub Food': ['Georgie Porgie', 'Deep Fried Everything'],
+                'Malaysian': ['Queen St. Cafe'],
+                'Thai': ['Queen St. Cafe'],
+                'Chinese': ['Dumplings R Us'],
+                'Mexican': ['Mexican Grill']}
+    >>> cuisines = ['Thai', Chinese]
+    >>> filter_by_cuisine(names, cuis, cuisines)
+    ['Queen St. Cafe', 'Dumplings R Us']
+    '''
+
+    for i in cuisine_list:
+        for j in names_matching_price:
+            if j in cuisine_to_names[i]:
+                restaurants_matching.append(j)
 def read_restaurants(file):
     ''' (file) -> (dict, dict, dict)
 
