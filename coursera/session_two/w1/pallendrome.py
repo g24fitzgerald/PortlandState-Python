@@ -26,9 +26,9 @@ def pallendrome_reverse(str):
 
     Returns whether or not a given string is a pallendrome
 
-    >>> pallendrome_index('noon')
+    >>> pallendrome_reverse('noon')
     True
-    >>> pallendrome_index('truck')
+    >>> pallendrome_reverse('truck')
     False
     '''
     return reverse(str)
