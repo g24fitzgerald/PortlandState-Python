@@ -17,24 +17,3 @@ def anagram_v1(s1, s2):
     L1.sort()
     L2.sort()
     return L1 == L2
-
-#unrelated to prev function 
-def make_dictionary(s):
-    ''' (str) -> dict of {str : int}
-
-    Return a dictionary of keys str and
-    values int of the number of ocurrances of letter in str
-
-    >>> make_dictionary('noodle'):
-    {n:1, o:2, d:1, l:1, e:1}
-    '''
-    d = {}
-    for i in s:
-        #if char not in accumulator
-        #add s[i] as entry
-        if not (s[i] in d):
-            d[s[i]] == 1
-        #otherwise increment value of char key
-        else:
-            d[s[i]] == d[s[i]] + 1
-    return d
