@@ -85,9 +85,9 @@ def pallendrome_for_v1(s):
 
     Returns whether or not a given string is a pallendrome
 
-    >>> pallendrome_char_check('noon')
+    >>> pallendrome_for_v1('noon')
     True
-    >>> pallendrome_char_check('truck')
+    >>> pallendrome_for_v1('truck')
     False
     '''
     for i in range(len(s) // 2):
@@ -100,9 +100,9 @@ def pallendrome_for_v2(s):
 
     Returns whether or not a given string is a pallendrome
 
-    >>> pallendrome_char_check('noon')
+    >>> pallendrome_for_v2('noon')
     True
-    >>> pallendrome_char_check('truck')
+    >>> pallendrome_for_v2('truck')
     False
     '''
     j = len(s) - 1
