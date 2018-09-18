@@ -78,7 +78,38 @@ def pallendrome_char_check(str):
     while i < j and s[i] == s[j]:
         i = i + 1
         j = j - i
-    return j <= i 
+    return j <= i
+
+def pallendrome_for_v1(s):
+    ''' (str) -> bool
+
+    Returns whether or not a given string is a pallendrome
+
+    >>> pallendrome_char_check('noon')
+    True
+    >>> pallendrome_char_check('truck')
+    False
+    '''
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - i -1]:
+            return False
+    return True
+
+def pallendrome_for_v2(s):
+    ''' (str) -> bool
+
+    Returns whether or not a given string is a pallendrome
+
+    >>> pallendrome_char_check('noon')
+    True
+    >>> pallendrome_char_check('truck')
+    False
+    '''
+    j = len(s) - 1
+    for i in range(len(s) // 2):
+        if s[i] != s[j - i]:
+            return False
+    return True
 
 def reverse(s):
     ''' (str) -> str
