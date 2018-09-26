@@ -15,7 +15,7 @@ def is_one_to_one(d):
     '''
     values_seen = []
     for key in d:
-        #if we've already seen the value in another key, false
+        # if we've already seen the value in another key, false
         if d[key] in values_seen:
             return False
         else:

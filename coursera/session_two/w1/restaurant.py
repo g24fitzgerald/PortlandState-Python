@@ -166,7 +166,7 @@ def read_restaurants(file):
         line = file.readline() # move to $$
         price_to_names[line.rstrip('\n')].append(restaurant_name)
 
-        #build cuisine_to_names dictionary
+        # build cuisine_to_names dictionary
         line = file.readline() # move to cuisine food
         cuisine = line.rstrip('\n').split(',') #make array of cuisine foods
         for food in cuisine:

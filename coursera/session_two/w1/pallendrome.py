@@ -45,10 +45,10 @@ def pallendrome_split(str):
     >>> pallendrome_split('truck')
     False
     '''
-    #starting index of 2nd half of word ommitting middle letter of odd word
+    # starting index of 2nd half of word ommitting middle letter of odd word
     second_index = len(str) // 2 + 1
 
-    #slice strings to get first and second half of word ommitting middle letter
+    # slice strings to get first and second half of word ommitting middle letter
     first_half = str[:len(str) // 2]
     second_half = str[second_index:]
 
@@ -71,7 +71,7 @@ def pallendrome_char_check(str):
     #         return False
     # return True
 
-    #Revised Solution
+    # Revised Solution
     i = 0
     j = len(str) - 1
 
